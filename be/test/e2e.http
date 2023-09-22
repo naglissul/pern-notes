@@ -1,0 +1,48 @@
+### List all notes from database
+GET http://localhost:8080/api/notes
+
+### Create new note
+POST http://localhost:8080/api/notes
+Content-Type: application/json
+
+{
+    "name": "Audrius", 
+    "title": "IMPORTANT!",
+    "content": "Don't forget to brush your teeth :DD"
+}
+
+### Create new note
+POST http://localhost:8080/api/notes
+Content-Type: application/json
+
+{
+    "name": "Jonas", 
+    "title": "Today",
+    "content": "Need to do a lot of things..."
+}
+
+### Create new note
+POST http://localhost:8080/api/notes
+Content-Type: application/json
+
+{
+    "name": "Petras", 
+    "title": "Pirmadienį",
+    "content": "Išsikept šašlykų reiktu. visai noreciau"
+}
+
+### Update note with id=2
+PUT http://localhost:8080/api/notes
+Content-Type: application/json
+
+{
+    "id": 2,
+    "name": "Audrius", 
+    "title": "Not so important",
+    "content": "Just brush your teeth..."
+}
+
+
+### Delete note with id=11
+DELETE http://localhost:8080/api/notes/1
+
