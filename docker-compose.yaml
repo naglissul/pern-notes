@@ -1,0 +1,45 @@
+version: "3"
+services:
+  frontend:
+    build:
+      context: ./fe
+      dockerfile: Dockerfile
+    container_name: pern-notes-fe
+    ports:
+      - "3000:80"
+    environment:
+      - PORT=3000
+      - REACT_APP_APIPORT=5000
+      - REACT_APP_APIHOST=http://sci-dict.lt
+    networks:
+      - pern-network
+  backend:
+    build:
+      context: ./be
+      dockerfile: Dockerfile
+    container_name: pern-notes-be
+    ports:
+      - "5000:5000" 
+    environment:
+      - PORT=5000
+      - PGHOST=http://sci-dict.lt
+      - PGUSER=pguser
+      - PGPASSWORD=pgpass!!
+      - PGDATABASE=notesdb
+      - PGPORT=5432
+    depends_on:
+      - db
+    networks:
+      - pern-network
+  db:
+    image: postgres:latest
+    container_name: pern-notes-pgdb
+    environment:
+      POSTGRES_USER: pguser
+      POSTGRES_PASSWORD: pgpass!!
+      POSTGRES_DB: notesdb
+      POSTGRES_PORT: 5432
+    networks:
+      - pern-network
+networks:
+  pern-network:
