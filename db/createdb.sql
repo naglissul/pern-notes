@@ -1,8 +1,8 @@
-CREATE DATABASE notes_app;
+CREATE DATABASE notesdb;
 
 -- \l
 
-\c notes_app
+\c notesdb
 
 CREATE TABLE notes (
     id SERIAL,
